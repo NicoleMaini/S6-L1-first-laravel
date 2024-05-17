@@ -1,3 +1,5 @@
-<div>
-    <!-- The biggest battle is the war against ignorance. - Mustafa Kemal Atatürk -->
-</div>
+@extends('template.template')
+@section('title', 'About')
+@section('content')
+<h1>sono la page about</h1>
+@endsection

@@ -19,6 +19,15 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?= route('home') ?>">Laravel - First Project</a>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        menù
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="<?= route('activities.index') ?>">Activities</a></li>
+                        <li><a class="dropdown-item" href="<?= route('activities.add') ?>">Add Activities</a></li>
+                    </ul>
+                </li>
             </ul>
             <!-- Left links -->
 

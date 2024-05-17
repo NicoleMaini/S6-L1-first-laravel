@@ -1,9 +1,8 @@
-@extends('template.template')
-@section('title', 'Add Page')
-@section('content')
-<x-form btn='Inserisci'>Inserisci i tuoi prodotti</x-form>
-<!-- <div class="container mt-5">
-    <h2 class="my-5 text-center">Inserisci i tuoi prodotti</h2>
+<!-- $attirbutes -> get('props') le props -->
+<!-- $attirbutes -> class('btn') le props - stampa le classi e le unisce alle classi del componente precedente -->
+
+<div class="container mt-5">
+    <h2 class="my-5 text-center">{{$slot}}</h2>
     <form class="mb-5" action="" method="post">
         <div class="mb-3">
             <label for="image" class="form-label">Immagine</label>
@@ -26,9 +25,7 @@
             <input type="text" class="form-control" name="price" value="">
         </div>
         <div class="d-flex justify-content-center mt-4">
-            <button type="submit" class="btn btn-primary">Inserisci</button>
+            <button type="submit" class="btn btn-primary">{{$attributes -> get('btn')}}</button>
         </div>
     </form>
-</div> -->
-
-@endsection
+</div>

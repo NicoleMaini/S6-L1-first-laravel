@@ -7,17 +7,27 @@ use Illuminate\Http\Request;
 class ActivitiesController extends Controller
 {
     public function index()
-    { // callback - funzione che vengono passate come parametro ad altr funzioni
-        return view('activities.index');
+    {
+        // callback - funzione che vengono passate come parametro ad altr funzioni
+        $products = ['p1', 'p2', 'p3'];
+
+        // dd($products);  // si vede direttamente il suo risultato e non la vista
+        // dump($products); // si vede il risultato e la vista
+        // ddd($products); // riassunto completo di quello che sta avvenedo lato server
+        return view('activities.index', ['products' => $products]);
     }
 
-    public function details($param) // parametri passati tramite path
-    { // callback - funzione che vengono passate come parametro ad altr funzioni
+    public function details($param)
+    {
+        // parametri passati tramite path
+        // callback - funzione che vengono passate come parametro ad altr funzioni
         return 'ecco il parametro: ' . $param;
     }
 
-    public function add() // parametri passati tramite path
-    { // callback - funzione che vengono passate come parametro ad altr funzioni
+    public function add()
+    {
+        // parametri passati tramite path
+        // callback - funzione che vengono passate come parametro ad altr funzioni
         return view('activities.add');
     }
 

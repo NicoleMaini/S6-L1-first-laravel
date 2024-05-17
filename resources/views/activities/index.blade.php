@@ -1,7 +1,20 @@
-@include('partials.header')
-@include('partials.nav')
+@extends('template.template')
+@section('title', 'Activities')
+@section('content')
 
-<h1>Hello World</h1>
+    <h1>Page activities</h1>
+
+    {{-- @dd($products)  --}}
+    {{--  @dump($products)  --}}
+    @if ($products)
+        <ul>
+            @foreach ($products as $product)
+                <li>{{ $product }}</li>
+            @endforeach
+        </ul>
+    @else
+        <h2>Non ci sono prodotti</h2>
+    @endif
 
 
-@include('partials.footer')
+@endsection
