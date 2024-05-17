@@ -17,7 +17,7 @@
             <!-- Left links -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= route('activities.index') ?>">Laravel - First Project</a>
+                    <a class="nav-link" href="<?= route('home') ?>">Laravel - First Project</a>
                 </li>
             </ul>
             <!-- Left links -->

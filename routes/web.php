@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\Route;
 
 // rotte pagine generali
 Route::get('/', [PageController::class, 'home'])->name('home');
-Route::get('/', [PageController::class, 'about'])->name('about');
+Route::get('/about', [PageController::class, 'about'])->name('about');
 
 // rotte per la risorsa del sito
 
-Route::get('/', [ActivitiesController::class, 'index'])->name('activities.index');
+Route::get('/activities/index', [ActivitiesController::class, 'index'])->name('activities.index');
 Route::get('/activities/add', [ActivitiesController::class, 'add'])->name('activities.add');
 Route::get('/activities/{param}', [ActivitiesController::class, 'details'])->name('activities.details');
 Route::get('/activities/{param}/edit', [ActivitiesController::class, 'edit'])->name('activities.edit');
