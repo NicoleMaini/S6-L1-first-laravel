@@ -8,7 +8,6 @@
     {{--  @dump($products)  --}}
 
     @if ($activities)
-
         <table class="table table-striped">
             <thead>
                 <tr>

@@ -54,6 +54,22 @@ class ActivitiesController extends Controller
         // return view('activities.edit', compact($param)); // ritorna in pagina il parametro con lo stesso nome
     }
 
+    public function store(Request $request)
+    {
+        $data = $request->all();
+        // salvare i dati nel database
+        $newActivity = new Activity();
+        $newActivity->title = $data['title'];
+        $newActivity->hour = $data['hour'];
+        $newActivity->date = $data['date'];
+        $newActivity->description = $data['description'];
+        $newActivity->save();
+        // Book::insert
+
+        // ridirezionare
+        return redirect()->route('activities.index');
+    }
+
     public function destroy($param)
     {
         $activity = Activity::findOrFail($param);
