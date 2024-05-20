@@ -12,9 +12,13 @@
 
 <body>
     @include('partials.nav')
+
+
     <main class="container">
         @yield('content')
     </main>
+
+
     <footer class="bg-body-tertiary text-center">
         <!-- Grid container -->
         <div class="container p-4 pb-0">
