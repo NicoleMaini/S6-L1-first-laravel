@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Activity;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ActivitiesController extends Controller
 {
@@ -48,11 +49,6 @@ class ActivitiesController extends Controller
     //     $all = $request->all();
     //     var_dump($all);
     // }
-    public function edit($param)
-    {
-        return view('activities.edit', ['param' => $param]); // ritorna in pagina il valore se inserito tra doppie grafe
-        // return view('activities.edit', compact($param)); // ritorna in pagina il parametro con lo stesso nome
-    }
 
     public function store(Request $request)
     {
@@ -63,6 +59,7 @@ class ActivitiesController extends Controller
         $newActivity->hour = $data['hour'];
         $newActivity->date = $data['date'];
         $newActivity->description = $data['description'];
+        $newActivity->user_id = $request->user()->id;
         $newActivity->save();
         // Book::insert
 
@@ -70,11 +67,50 @@ class ActivitiesController extends Controller
         return redirect()->route('activities.index');
     }
 
+    public function edit($param)
+    {
+        $activity = Activity::findOrFail($param);
+        if (Auth::user()->id !== $activity->user_id) {
+            abort(401);
+        }
+        return view('activities.edit', compact('activity')); // equivalente di ['activity' => $activity]
+        // return view('activities.edit', compact('param')); // ritorna in pagina il parametro con lo stesso nome
+    }
+
+    public function update(Request $request, $param)
+    {
+        $data = $request->all();
+        // dd($data);
+
+        // validare i dati
+        // TODO: risolvere errore del campo duplicato con le validazioni
+
+        // aggiornare i dati nel database
+        $activity = Activity::findOrFail($param);
+        if ($request->user()->id !== $activity->user_id) {
+            abort(401);
+        }
+
+        $activity->title = $data['title'];
+        $activity->hour = $data['hour'];
+        $activity->date = $data['date'];
+        $activity->description = $data['description'];
+        $activity->update();
+
+        // ridirezionare
+        return redirect()->route('activities.details', ['param' => $param]);
+    }
+
     public function destroy($param)
     {
         $activity = Activity::findOrFail($param);
+
+        if (Auth::user()->id !== $activity->user_id) {
+            abort(401);
+        }
+
         $activity->delete();
 
-        return redirect()->route('activities.index');
+        return redirect()->route('activities.index')->with('success', $activity);
     }
 }

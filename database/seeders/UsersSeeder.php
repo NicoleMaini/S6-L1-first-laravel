@@ -18,6 +18,6 @@ class UsersSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
-        User::factory(10)->create(); // per popolare con la classe user 101 righe nella tabella generate in modo casuale
+        User::factory(5)->create(); // per popolare con la classe user 101 righe nella tabella generate in modo casuale
     }
 }

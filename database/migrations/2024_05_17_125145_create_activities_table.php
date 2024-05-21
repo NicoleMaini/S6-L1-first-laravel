@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->string('hour', 10)->nullable();
             $table->string('date', 20)->naullable();
             $table->string('description', 500)->nullable();
+            $table->bigInteger('user_id')->nullable();
             $table->timestamps();
         });
     }
